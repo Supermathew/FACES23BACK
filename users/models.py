@@ -68,6 +68,7 @@ class User(AbstractBaseUser, PermissionsMixin):
 
 class UserRequest(models.Model):
   email = models.EmailField(_('email address'),unique=True, max_length=254)
+  roll_no = models.IntegerField(_("Roll Number"), blank=True,null=True)
   name = models.CharField(_('Name'), max_length=256,blank=False)
   department = models.CharField(_('Department'),max_length=10,blank=False, choices=DEPARTMENTS)
   semester = models.SmallIntegerField(_("Semester"),blank=False)
@@ -92,21 +93,22 @@ def make_user_when_approved(sender, instance, created, **kwargs):
     if User.objects.filter(email=instance.email).exists():
       return
 
-    u = [1]
-    while len(u) > 0:
-      new_roll_no = make_roll_no()
-      u = User.objects.filter(roll_no=new_roll_no)
+    # u = [1]
+    # while len(u) > 0:
+    #   new_roll_no = make_roll_no()
+    #   u = User.objects.filter(roll_no=new_roll_no)
 
     try:
       pwd = make_password()
       print(pwd)
       user = User(
-        roll_no=new_roll_no,
+        roll_no=roll_no,
         email=instance.email,
         name=instance.name,
         department=instance.department,
         semester=instance.semester,
         phone_no=instance.phone_no,
+        userpassword=pwd,
         is_phone_no_verified=True,
         has_filled_profile=True,
         is_from_fcrit=False,
