@@ -14,7 +14,7 @@ class Event(models.Model):
   )
   CATEGORIES = (
     ("C","Cultural"),
-    ("T", "Technical"),
+    ("SE", "Seminar"),
     ("S", "Sports"),
   )
 
@@ -31,7 +31,7 @@ class Event(models.Model):
   image = models.ImageField(_("Event Banner"), upload_to="uploads/")
   seats = models.IntegerField(_("Event Seats(0 at start)"),blank=False,default=0)
   max_seats = models.IntegerField(_("Maximum Event Seats"),blank=False,default=0)
-  category = models.CharField(_("Category"), choices=CATEGORIES, max_length=1, blank=False)
+  category = models.CharField(_("Category"), choices=CATEGORIES, max_length=2, blank=False)
   is_seminar = models.BooleanField(_("Is Event a Seminar"), default=False, blank=False)
   team_size = models.IntegerField(_("Team Size"), default=1)
   is_team_size_strict = models.BooleanField(_("Is Team Size Strict"), blank=False)

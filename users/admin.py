@@ -5,6 +5,7 @@ import csv
 
 from .models import User, UserRequest , Participation
 from django.core.mail import send_mail
+# from django.contrib.auth.admin import UserAdmin as BaseUserAdmin
 # from django.contrib.auth.models import User
 from django.urls import reverse
 from django.utils.html import format_html

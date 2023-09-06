@@ -22,8 +22,10 @@ class UserManager(BaseUserManager):
       email = self.normalize_email(email)
       
       user = self.model(roll_no=roll_no,name = name, email=email,semester= semester,department= department, **extra_fields)
+      print("hello")
       user.set_password(password)
-      user.save()
+      # user.save()
+      user.save(using=self._db)
       return user
 
   def create_user(self, roll_no, email, password, **extra_fields):
@@ -35,12 +37,15 @@ class UserManager(BaseUserManager):
 
       if not email:
         raise ValueError('The Email must be set')
-
+      print("hello world")
       email = self.normalize_email(email)
-      
+      print(email)
       user = self.model(roll_no=roll_no, email=email, **extra_fields)
+      print("hello")
       user.set_password(password)
-      user.save()
+      print("hello")
+      # user.save()
+      user.save(using=self._db)
       return user
   def create_superuser(self,roll_no, email, password, **extra_fields):
       """
