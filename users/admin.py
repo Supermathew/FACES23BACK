@@ -65,7 +65,7 @@ class UserAdmin(admin.ModelAdmin):
                 user.userpassword,
                 "faces.fcrit.ac.in",  # Change this URL to the login page URL
             )
-            from_email = "etamax2023@outlook.com"  # Change this to your email address
+            from_email = "faces@fcrit.ac.in"  # Change this to your email address
             recipient_list = [user.email]
 
             try:

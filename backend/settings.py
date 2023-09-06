@@ -206,13 +206,28 @@ STATICFILES_DIRS = (
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # SMTP settings
-EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-EMAIL_HOST = 'SMTP.outlook.com'
-EMAIL_PORT = 587
-EMAIL_USE_TLS = True
-EMAIL_HOST_USER = 'etamax2023@outlook.com'
-EMAIL_HOST_PASSWORD = "etamax23"
+# EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+# EMAIL_HOST = 'SMTP.outlook.com'
+# EMAIL_PORT = 587
+# EMAIL_USE_TLS = True
+# EMAIL_HOST_USER = 'etamax2023@outlook.com'
+# EMAIL_HOST_PASSWORD = "etamax23"
 
+# settings.py
+
+# Use the SMTP email backend
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+
+# Outlook SMTP settings
+EMAIL_HOST = 'smtp.office365.com'  # Outlook SMTP server
+EMAIL_PORT = 587  # Port for TLS (587 is commonly used)
+EMAIL_USE_TLS = True  # Use TLS encryption
+EMAIL_USE_SSL = False  # Don't use SSL
+EMAIL_HOST_USER = 'faces@fcrit.ac.in'  # Your Outlook email address
+EMAIL_HOST_PASSWORD = 'faces@2023'  # Your Outlook email password (consider using app-specific password)
+
+# Sender's email address (usually the same as EMAIL_HOST_USER)
+DEFAULT_FROM_EMAIL = '1021209@comp.fcrit.ac.in'  # Your Outlook email address
 
 # MATOR SETTINGS
 
